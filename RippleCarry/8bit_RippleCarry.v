@@ -40,17 +40,29 @@ module RippleCarry(input [7:0] x1,
                    output cout,
                    [7:0] y);
   
-  wire [6:0] cin;
+  wire [6:0] w_cin;
+  //Create first Adder
+  FullAdder FA_0 (.x1(x1[0]),
+                .x2(x2[0]),
+                .cin(cin),
+                .cout(w_cin[0])
+                  .sum(y[0]));
+  //Create last Adder
+  FullAdder FA_7 (.x1(x1[7]),
+                  .x2(x2[7]),
+                  .cin(w_cin[6]),
+                  .cout(cout)
+                  .sum(y[7]));
   
   
-  genvar i = 8;
+  genvar i;
   
   generate
-    for(i=0;i<8;i=i+1) begin
+    for(i=1;i<7;i=i+1) begin
       FullAdder FA (.x1(x1[i]),
                     .x2(x2[i]),
-                    .cin(),//How to assign cins and couts in an algorithmic method?
-                    .cout()
+                    .cin(w_cin[i-1]),//How to assign cins and couts in an algorithmic method?
+                    .cout(i)
                     .sum(y[i]));
     end
   endgenerate
