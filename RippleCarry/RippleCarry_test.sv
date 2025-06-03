@@ -2,6 +2,8 @@
 // or browse Examples
 // Code your testbench here
 // or browse Examples
+
+`include "8bit_RippleCarry.v"
 module tb_FA();
   
   

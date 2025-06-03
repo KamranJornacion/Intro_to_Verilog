@@ -1,6 +1,7 @@
 // Testbench
+`include "2_1_Mux.v"
 module test;
-
+  
   reg inA;
   reg inB;
   reg sel;
