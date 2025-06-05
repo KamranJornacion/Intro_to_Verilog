@@ -2,9 +2,6 @@
     `define N 8
 `endif
 
-
-
-
 `include "addsub.v"
 
 module addsubTB ();
